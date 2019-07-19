@@ -1,0 +1,56 @@
+1: aluminum foil
+2: asiago bread
+3: backpack
+4: bag of food
+5: bag of salt
+6: bike wrench
+7: bottle
+8: box
+9: bread
+10: brush
+11: carfe
+12: carryon bag
+13: casing
+14: chair
+15: cloth
+16: cooker
+17: crankset
+18: crossbar
+19: crusher
+20: cup
+21: detergent
+22: electronics
+23: fish
+24: glasses
+25: glove
+26: ice maker
+27: jar
+28: juice box
+29: key vase
+30: lemon
+31: lunch box
+32: magazine
+33: metal part
+34: noodles
+35: oven glove
+36: paper bag
+37: pill bottle
+38: plastic wrap
+39: rice bag
+40: scissors
+41: shirakuku rice
+42: shredding blade
+43: soap bottle
+44: sponge
+45: spray bottle
+46: swiss army knife
+47: tape
+48: tape measure
+49: tent
+50: tool
+51: tube
+52: tums
+53: vacuum
+54: vase
+55: wheels
+56: wrench
