@@ -16,14 +16,14 @@ from matplotlib.patches import Polygon
 import home_objects
 
 
-import mrcnn.utils as utils
-import mrcnn.visualize as visualize
-from mrcnn.visualize import display_images
-import mrcnn.model as modellib
-from mrcnn.model import log
+import utils as utils
+import visualize as visualize
+from visualize import display_images
+import model as modellib
+from model import log
 
-ROOT_DIR = os.path.abspath("C:\\phd\\MaskRCNN\\Mask_RCNN")
-DATASET_DIR = "E:\\Datasets\\HomeObjects06"
+ROOT_DIR = os.path.abspath(".")
+DATASET_DIR = "D:\\HomeObjects06"
 ANNOTATION_DIR = os.path.join(DATASET_DIR, 'Annotated')
 sys.path.append(ROOT_DIR)
 

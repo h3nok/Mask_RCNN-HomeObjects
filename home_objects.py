@@ -17,12 +17,12 @@ from enum import Enum
 import matplotlib.pyplot as plt
 
 # Root directory of the project
-ROOT_DIR = os.path.abspath("C:\\phd\\MaskRCNN\\Mask_RCNN")
+ROOT_DIR = os.path.abspath(".")
 sys.path.append(ROOT_DIR)  # To find local version of the library
-from mrcnn.config import Config
-from mrcnn import model as modellib, utils
-from Mask_RCNN.mrcnn.visualize import display_instances
-
+from config import Config
+import model as modellib
+from visualize import display_instances
+import utils
 # Path to trained weights file
 COCO_WEIGHTS_PATH = os.path.join(ROOT_DIR, "mask_rcnn_coco.h5")
 
@@ -367,13 +367,13 @@ if __name__ == '__main__':
                         default='train',
                         help="'train' or 'splash'")
     parser.add_argument('--dataset', required=True,
-                        default="E:\\Datasets\\HomeObjects06",
+                        default="D:\\HomeObjects06",
                         help='Directory of the custom dataset')
     parser.add_argument('--weights', required=True,
                         default='coco',
                         help="Path to weights .h5 file or 'coco'")
     parser.add_argument('--logs', required=False,
-                        default="E:\\Datasets\\HomeObjects06\\Logs",
+                        default=" D:\\HomeObjects06\\Logs",
                         metavar="E:\\Datasets\\HomeObjects06\\Logs",
                         help='Logs and checkpoints directory (default=logs/)')
     parser.add_argument('--image', required=False,
