@@ -1,10 +1,26 @@
 import os
 import sys
+import itertools
+import math
+import logging
+import json
+import re
+import random
+from collections import OrderedDict
 import numpy as np
+import matplotlib
+import matplotlib.pyplot as plt
+import matplotlib.patches as patches
+import matplotlib.lines as lines
+from matplotlib.patches import Polygon
 import home_objects
 
 
-import visualize as visualize
+import mrcnn.utils as utils
+import mrcnn.visualize as visualize
+from mrcnn.visualize import display_images
+import mrcnn.model as modellib
+from mrcnn.model import log
 
 ROOT_DIR = os.path.abspath("C:\\phd\\MaskRCNN\\Mask_RCNN")
 DATASET_DIR = "E:\\Datasets\\HomeObjects06"
@@ -22,28 +38,28 @@ if not os.path.exists(ANNOTATION_DIR):
 print("Image Count: {}".format(len(dataset.image_ids)))
 print("Class Count: {}".format(dataset.num_classes))
 image_ids = np.random.choice(dataset.image_ids, 4)
-for image_id in image_ids:
-    image = dataset.load_image(image_id)
-    mask, class_ids = dataset.load_mask(image_id)
-    print(image_id)
-    visualize.display_top_masks(image, mask, class_ids, dataset.class_names)
-
-# # Load random image and mask.
-# # image_ids = np.random.choice(dataset.image_ids, 4)
-# for image_id in dataset.image_ids:
-#     print(image_id)
+# for image_id in image_ids:
 #     image = dataset.load_image(image_id)
 #     mask, class_ids = dataset.load_mask(image_id)
-#     path = os.path.join(ANNOTATION_DIR, os.path.basename(dataset.image_reference(image_id)))
-#     # Compute Bounding box
-#     bbox = utils.extract_bboxes(mask)
-#
-#     # Display image and additional stats
-#     print("image_id ", image_id, path)
-#     log("image", image)
-#     log("mask", mask)
-#     log("class_ids", class_ids)
-#     log("bbox", bbox)
-#     log("file", )
-#     # Display image and instances
-#     visualize.display_instances(image, bbox, mask, class_ids, dataset.class_names, output=path)
+#     print(image_id)
+#     visualize.display_top_masks(image, mask, class_ids, dataset.class_names)
+
+# Load random image and mask.
+# image_ids = np.random.choice(dataset.image_ids, 4)
+for image_id in dataset.image_ids:
+    print(image_id)
+    image = dataset.load_image(image_id)
+    mask, class_ids = dataset.load_mask(image_id)
+    path = os.path.join(ANNOTATION_DIR, os.path.basename(dataset.image_reference(image_id)))
+    # Compute Bounding box
+    bbox = utils.extract_bboxes(mask)
+
+    # Display image and additional stats
+    print("image_id ", image_id, path)
+    log("image", image)
+    log("mask", mask)
+    log("class_ids", class_ids)
+    log("bbox", bbox)
+    log("file", )
+    # Display image and instances
+    visualize.display_instances(image, bbox, mask, class_ids, dataset.class_names, output=path)

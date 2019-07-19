@@ -12,8 +12,6 @@ import datetime
 import numpy as np
 import skimage.draw
 from dataset_utils import _list_to_file
-from collections import defaultdict
-import cv2
 import imgaug
 from enum import Enum
 import matplotlib.pyplot as plt
@@ -301,6 +299,8 @@ def detect_and_color_splash(m, image_path=None, video_path=None):
         r = m.detect([image], verbose=1)[0]
         # Color splash
         if len(r['rois']) == 0:
+            print("ROIS     : {}".format(r['rois']))
+            print("CLASS_IDs: {}".format(r['class_ids']))
             dataset = HomeObjectDataset()
             dataset.load_homeobject(args.dataset, 'Val')
             dataset.prepare()
@@ -350,7 +350,7 @@ def detect_and_color_splash(m, image_path=None, video_path=None):
                 vwriter.write(splash)
                 count += 1
         vwriter.release()
-    print("Saved to ", file_name)
+        print("Saved to ", file_name)
 
 
 ############################################################
@@ -389,7 +389,7 @@ if __name__ == '__main__':
                         default=True,
                         help="Train with in-training augmentation")
     parser.add_argument('--augment_type', required=False, type=AugmentType,
-                        default=AugmentType.Sometimes,
+                        default=AugmentType.Sequential,
                         help="Determines how augmentation is applied during training")
     parser.add_argument('--layers', required=False, type=str,
                         default='all',
@@ -453,8 +453,7 @@ if __name__ == '__main__':
         # Exclude the last layers because they require a matching
         # number of classes
         model.load_weights(weights_path, by_name=True, exclude=["mrcnn_class_logits",
-                                                                "mrcnn_bbox_fc",
-                                                                "mrcnn_bbox",
+                                                                "mrcnn_bbox_fc", "mrcnn_bbox",
                                                                 "mrcnn_mask"])
     else:
         model.load_weights(weights_path, by_name=True)

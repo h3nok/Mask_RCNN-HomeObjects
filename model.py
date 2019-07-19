@@ -1817,7 +1817,7 @@ def data_generator(dataset, config, shuffle=True, augment=False, augmentation=No
 #  MaskRCNN Class
 ############################################################
 
-class MaskRCNN:
+class MaskRCNN():
     """Encapsulates the Mask RCNN model functionality.
 
     The actual Keras model is in the keras_model property.

@@ -15,12 +15,8 @@ def _list_to_file(file_path, items_list) -> None:
         os.remove(file_path)
 
     with open(file_path, 'w+') as f:
-        if isinstance(items_list, list):
-            for item in items_list:
-                f.write("{}\n".format(item))
-        elif isinstance(items_list, dict):
-            for key, value in items_list.items():
-                f.write("{}: {}\n".format(value, key))
+        for item in items_list:
+            f.write("{}\n".format(item))
 
 
 class Augmenter(object):
@@ -225,11 +221,10 @@ def test_augment():
         augmented_samples = augment(sample)
         filename = os.path.basename(sample)
         filename, ext = os.path.splitext(filename)
-        visualize_n_save_annotated_images(augmented_samples,
-                                          ['flipupdown', "flipleftright",
-                                           "cropped", "rotate_90", "rotate_180",
-                                           "contrast", "hue",
-                                           "brightness"], filename=filename, output_dir=output_dir)
+        visualize_n_save_annotated_images(augmented_samples, ['flipupdown', "flipleftright",
+                                                              "cropped", "rotate_90", "rotate_180",
+                                                              "contrast", "hue",
+                                                              "brightness"], filename=filename, output_dir=output_dir)
 
 
 if __name__ == '__main__':
